@@ -1,0 +1,2 @@
+# Reversi
+Juego de reversi
