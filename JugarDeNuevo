@@ -1,0 +1,44 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <iomanip>
+#include <string>
+#include <locale>
+//#include <conio>
+
+using std::cout;
+using std::cin;
+using std::toupper;
+using std::endl;
+
+
+bool playAgain()
+{
+    char seleccion;
+    cout << "\xA8Quieres jugar otra vez? [s/n]: ";
+    cin >> seleccion;
+    seleccion = toupper(seleccion);
+    if(seleccion == 'S'){
+        cout << "\nJugaste de nuevo\n" << endl;
+        return true;
+    }else if(seleccion == 'N'){
+        return false;
+    }else{
+        cout << "\nSolo entiendo con las letras 'S' o 'N', lo siento :(\n" << endl;
+    }
+}
+
+
+//----------------------------------------------
+int main()
+{
+    bool seleccion;
+    seleccion = playAgain();
+    while(seleccion != false){
+        seleccion = playAgain();
+    }
+    cout << "\nFin del juego\n" << endl;
+
+    system("pause");
+    return 0;
+}
