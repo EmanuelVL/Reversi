@@ -1,8 +1,8 @@
 /*
 Nombre: .cpp
-Autor: Raúl Octavio Murcia Yocupicio
+Autor: RaÃºl Octavio Murcia Yocupicio
 Fecha:
-Descripción:
+DescripciÃ³n:
 */
 
 #define _WIN32_WINNT 0x0500
@@ -29,29 +29,35 @@ int main()
     RECT r;
     GetWindowRect(console, &r);
 
-    int alto = (r.bottom - r.top) / 12 - 25, ancho = (r.right - r.left) / 8;
+    int alto = (r.bottom - r.top) / 12;
+    int ancho = (r.right - r.left) / 8;
 
-    ImprimeTitulo((ancho - 61)/2, (alto - 7)/2, 3);
-    ImprimeJugar((ancho - 28)/2, (alto - 4)/2 + 10, 1);
-    ImprimeInstrucciones((ancho - 61)/2, (alto - 4)/2 + 17, 1);
-    ImprimeSalir((ancho - 24)/2, (alto - 4)/2 + 24, 1);
+    ImprimeTitulo((ancho - 61)/2, alto/4, 3);
+    
+    int yJugar = alto/2;
+    int yInstrucciones = yJugar + 7;
+    int ySalir = yInstrucciones + 7;
+    
+    ImprimeJugar((ancho - 28)/2, yJugar, 0);
+    ImprimeInstrucciones((ancho - 61)/2, yInstrucciones, 0);
+    ImprimeSalir((ancho - 24)/2, ySalir, 0);
 
     int eleccion = JUGAR;
-    Subraya(eleccion, ancho/2, (alto - 4)/2 + 14, (alto - 4)/2 + 21, (alto - 4)/2 + 28, '_');
+    Subraya(eleccion, ancho/2, yJugar + 4, yInstrucciones + 4, ySalir + 4, '_');
 
     do{
         if(GetAsyncKeyState(VK_UP) & 0x8000){
-            Subraya(eleccion, ancho/2, (alto - 4)/2 + 14, (alto - 4)/2 + 21, (alto - 4)/2 + 28, ' ');
+            Subraya(eleccion, ancho/2, yJugar + 4, yInstrucciones + 4, ySalir + 4, ' ');
             eleccion--;
             if (eleccion < 0) eleccion += 3;
-            Subraya(eleccion, ancho/2, (alto - 4)/2 + 14, (alto - 4)/2 + 21, (alto - 4)/2 + 28, '_');
+            Subraya(eleccion, ancho/2, yJugar + 4, yInstrucciones + 4, ySalir + 4, '_');
             Sleep(200);
         }
         if(GetAsyncKeyState(VK_DOWN) & 0x8000){
-            Subraya(eleccion, ancho/2, (alto - 4)/2 + 14, (alto - 4)/2 + 21, (alto - 4)/2 + 28, ' ');
+            Subraya(eleccion, ancho/2, yJugar + 4, yInstrucciones + 4, ySalir + 4, ' ');
             eleccion++;
             if (eleccion > 2) eleccion -= 3;
-            Subraya(eleccion, ancho/2, (alto - 4)/2 + 14, (alto - 4)/2 + 21, (alto - 4)/2 + 28, '_');
+            Subraya(eleccion, ancho/2, yJugar + 4, yInstrucciones + 4, ySalir + 4, '_');
             Sleep(200);
         }
         if(GetAsyncKeyState(VK_RETURN) & 0x8000) break;
@@ -78,7 +84,7 @@ void Subraya(int eleccion, int xMedio, int y0, int y1, int y2, char c)
             for(int i = 0; i < 28; i++) cout << c;
             break;
         case INSTRUCCIONES:
-            gotoxy (xMedio - 30, y1);
+            gotoxy (xMedio - 31, y1);
             for(int i = 0; i < 61; i++) cout << c;
             break;
         case SALIR:
