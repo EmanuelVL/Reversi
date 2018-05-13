@@ -1,0 +1,108 @@
+#include <iostream>
+#include <cstdlib>
+#include <conio.h>
+
+using namespace std;
+
+int main()
+{
+
+	char move;
+	int plrX = 1, plrY = 1; // player start point
+
+	int map[10][10] = {
+
+		5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+		5, 1, 0, 0, 0, 0, 0, 0, 0, 5,
+		5, 0, 0, 0, 0, 0, 0, 0, 0, 5,
+		5, 0, 0, 0, 0, 0, 0, 0, 0, 5,
+		5, 0, 0, 0, 0, 0, 0, 0, 0, 5,
+		5, 0, 0, 0, 0, 0, 0, 0, 0, 5,
+		5, 0, 0, 0, 0, 0, 0, 0, 0, 5,
+		5, 0, 0, 0, 0, 0, 0, 0, 0, 5,
+		5, 0, 0, 0, 0, 0, 0, 0, 0, 5,
+		5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+
+	};
+
+	do{
+		system("cls");
+
+		for (int down = 0; down < 10; down++) {
+			for (int across = 0; across < 10; across++) {
+				switch (map[down][across]){
+					case 0:  // draw nothing
+						cout << " ";
+					break;
+					case 1:  // player1
+						cout << "@";
+					break;
+					case 5:  // wall
+						cout << "*";
+					break;
+				}
+			}
+			cout << endl;
+		}
+
+		// read the move
+		move = _getch();
+		move = toupper(move);
+
+		switch (move)
+		{
+			// left
+				case 'L' :
+					if (plrY > 1)   // if 1 we are against the wall.
+					{
+						if (map[plrX][plrY-1] == 0)
+						{
+							map[plrX][plrY] = 0;  // clear existing spot
+							map[plrX][plrY - 1] = 1; // new position.
+							plrY--;
+						}
+					}
+				break;
+				// right
+				case 'R' :
+				if (plrY < 9)   // if 9 we are against the wall.
+				{
+					if (map[plrX][plrY + 1] == 0)
+					{
+						map[plrX][plrY] = 0;  // clear existing spot
+						map[plrX][plrY + 1] = 1; // new position.
+						plrY++;
+					}
+				}
+				break;
+				// up
+				case 'U' :
+					if (plrX > 1)   // if 1 we are against the wall.
+					{
+						if (map[plrX-1][plrY] == 0)
+						{
+							map[plrX][plrY] = 0;  // clear existing spot
+							map[plrX-1][plrY] = 1; // new position.
+							plrX--;
+						}
+					}
+				break;
+				// down
+				case 'D' :
+					if (plrX < 9)   // if 9 we are against the wall.
+					{
+						if (map[plrX + 1][plrY] == 0)
+						{
+							map[plrX][plrY] = 0;  // clear existing spot
+							map[plrX + 1][plrY] = 1; // new position.
+							plrX++;
+						}
+					}
+				break;
+		}
+
+	} while (move != 'Q');
+
+
+	return 0;
+}
