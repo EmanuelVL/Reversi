@@ -7,9 +7,21 @@ Descripción:
 
 #define _WIN32_WINNT 0x0500
 
+#define FLECHA_ARRIBA 72
+#define FLECHA_IZQ 75
+#define FLECHA_DER 77
+#define FLECHA_ABAJO 80
+#define ENTER 13
+
 #include <iostream>
 #include <cstdlib>
 #include <windows.h>
+#include <conio.h>
+
+// Estados del cursor
+enum estadoCursor{APAGADO, ENCENDIDO};
+// Modos del cursor
+enum modoCursor{MINI = 5, NORMAL = 20, SOLIDO = 80};
 
 void ImprimeJugar(int x, int y, int t);
 void ImprimeTitulo(int x, int y, int t);
@@ -17,6 +29,7 @@ void ImprimeInstrucciones(int x, int y, int t);
 void ImprimeCreditos(int x, int y, int t);
 void ImprimeSalir(int x, int y, int t);
 void Subraya(int eleccion, int xMedio, int y0, int y1, int y2, int y3, char c);
+void CambiaCursor(estadoCursor estado, modoCursor modo = NORMAL);
 
 using namespace std;
 
@@ -24,7 +37,9 @@ enum {JUGAR, INSTRUCCIONES, CREDITOS, SALIR};
 
 int main()
 {
-    system("pause");
+    ShowWindow(GetConsoleWindow(), SW_MAXIMIZE);
+
+    CambiaCursor(APAGADO);
 
     HWND console = GetConsoleWindow();
     RECT r;
@@ -46,26 +61,30 @@ int main()
     ImprimeSalir((ancho - 24)/2, ySalir, 0);
 
     int eleccion = JUGAR;
-    Subraya(eleccion, ancho/2, yJugar + 4, yInstrucciones + 4, yCreditos + 4, ySalir + 4, '_');
+    char tecla;
+    Subraya(eleccion, ancho/2, yJugar + 4, yInstrucciones + 4, yCreditos + 4, ySalir + 4, char(205));
 
-    do{
-        if(GetAsyncKeyState(VK_UP) & 0x8000){
-            Subraya(eleccion, ancho/2, yJugar + 4, yInstrucciones + 4, yCreditos + 4, ySalir + 4, ' ');
-            eleccion--;
-            if (eleccion < 0) eleccion += 4;
-            Subraya(eleccion, ancho/2, yJugar + 4, yInstrucciones + 4, yCreditos + 4, ySalir + 4, '_');
-            Sleep(200);
-        }
-        if(GetAsyncKeyState(VK_DOWN) & 0x8000){
-            Subraya(eleccion, ancho/2, yJugar + 4, yInstrucciones + 4, yCreditos + 4, ySalir + 4, ' ');
-            eleccion++;
-            if (eleccion > 3) eleccion -= 4;
-            Subraya(eleccion, ancho/2, yJugar + 4, yInstrucciones + 4, yCreditos + 4, ySalir + 4, '_');
-            Sleep(200);
-        }
-        if(GetAsyncKeyState(VK_RETURN) & 0x8000) break;
+    while(true){
+        if (kbhit()){
+            tecla = getch();
 
-        }while(true);
+            if(tecla == FLECHA_ARRIBA){
+                Subraya(eleccion, ancho/2, yJugar + 4, yInstrucciones + 4, yCreditos + 4, ySalir + 4, ' ');
+                eleccion--;
+                if (eleccion < 0) eleccion += 4;
+                Subraya(eleccion, ancho/2, yJugar + 4, yInstrucciones + 4, yCreditos + 4, ySalir + 4, char(205));
+            }
+
+            if(tecla == FLECHA_ABAJO){
+                Subraya(eleccion, ancho/2, yJugar + 4, yInstrucciones + 4, yCreditos + 4, ySalir + 4, ' ');
+                eleccion++;
+                if (eleccion > 3) eleccion -= 4;
+                Subraya(eleccion, ancho/2, yJugar + 4, yInstrucciones + 4, yCreditos + 4, ySalir + 4, char(205));
+            }
+
+            if(tecla == ENTER) break;
+        }
+    }
 
 
     system("pause");
@@ -79,12 +98,23 @@ void gotoxy(int x, int y)
     SetConsoleCursorPosition (handle, coord);
 }
 
+void CambiaCursor(estadoCursor estado, modoCursor modo)
+{
+    HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+    CONSOLE_CURSOR_INFO ConCurInf;
+
+    ConCurInf.dwSize = modo;
+    ConCurInf.bVisible = estado;
+
+    SetConsoleCursorInfo(hOut, &ConCurInf);
+}
+
 void Subraya(int eleccion, int xMedio, int y0, int y1, int y2, int y3, char c)
 {
     switch(eleccion){
         case JUGAR:
             gotoxy (xMedio - 14, y0);
-            for(int i = 0; i < 28; i++) cout << c;
+            for(int i = 0; i < 27; i++) cout << c;
             break;
         case INSTRUCCIONES:
             gotoxy (xMedio - 31, y1);
@@ -92,7 +122,7 @@ void Subraya(int eleccion, int xMedio, int y0, int y1, int y2, int y3, char c)
             break;
         case CREDITOS:
             gotoxy(xMedio - 19, y2);
-            for (int i = 0; i < 38; i++) cout << c;
+            for (int i = 0; i < 37; i++) cout << c;
             break;
         case SALIR:
             gotoxy (xMedio - 12, y3);
