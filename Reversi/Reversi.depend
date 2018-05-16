@@ -1,0 +1,26 @@
+# depslib dependency file v1.0
+1526413800 source:c:\users\raul\documents\c++ files\reversi\main.cpp
+	<iostream>
+	<cstdlib>
+	<conio.h>
+	<windows.h>
+	"ReconocimientoTeclado.h"
+	"FuncionesMenu.h"
+	"ManejoConsola.h"
+
+1526412533 source:c:\users\raul\documents\c++ files\reversi\manejoconsola.cpp
+	"ManejoConsola.h"
+	<windows.h>
+
+1526413757 source:c:\users\raul\documents\c++ files\reversi\funcionesmenu.cpp
+	<iostream>
+	<windows.h>
+	"FuncionesMenu.h"
+	"ManejoConsola.h"
+
+1526410644 c:\users\raul\documents\c++ files\reversi\funcionesmenu.h
+
+1526411985 c:\users\raul\documents\c++ files\reversi\manejoconsola.h
+
+1526410424 c:\users\raul\documents\c++ files\reversi\reconocimientoteclado.h
+
