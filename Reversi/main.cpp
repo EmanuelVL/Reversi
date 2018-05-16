@@ -3,9 +3,6 @@
 #include <cstdlib>
 #include <conio.h>
 
-
-#include <windows.h>
-
 #include "ReconocimientoTeclado.h"
 #include "FuncionesMenu.h"
 #include "ManejoConsola.h"
@@ -50,7 +47,7 @@ int Menu()
 
     MaximizaVentana(); //Maximiza pantalla
     CambiaCursor(APAGADO);
-    ObtieneDimensionesVentana(ancho, alto); //Obtiene las dimensiones en car·cteres
+    ObtieneDimensionesVentana(ancho, alto); //Obtiene las dimensiones en car√°cteres
 
     ImprimeTitulo((ancho - 61)/2, alto/4, 3); //Se imprime a una cuarta parte del alto
 
@@ -78,7 +75,6 @@ int Menu()
                 eleccion--;
                 if (eleccion < 0) eleccion += 4;
                 Subraya(eleccion, ancho/2, yJugar + 4, yInstrucciones + 4, yCreditos + 4, ySalir + 4, char(205));
-                Beep(440, 50);
             }
 
             if(tecla == FLECHA_ABAJO){
@@ -86,7 +82,6 @@ int Menu()
                 eleccion++;
                 if (eleccion > 3) eleccion -= 4;
                 Subraya(eleccion, ancho/2, yJugar + 4, yInstrucciones + 4, yCreditos + 4, ySalir + 4, char(205));
-                Beep(440, 50);
             }
 
             if(tecla == ENTER) break;
