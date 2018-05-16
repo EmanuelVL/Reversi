@@ -23,7 +23,7 @@ bool JuegaReversi(){
                 if (!posible) ImprimeMovimientoIncorrecto();
 
             }while(!posible);
-            RealizaMovimiento(x, y, (JugadorActual == NEGRA ? score1 : score2));
+            RealizaMovimiento(x, y, (JugadorActual == NEGRA ? score1 : score2), (JugadorActual == NEGRA ? score2 : score1));
             fichasEnTablero++;
             
         }else{
