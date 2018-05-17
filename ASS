@@ -1,28 +1,32 @@
-bool MovimientoPosible(int reng, int col, espacioTablero Jugador);
+bool MovimientoPosible(int reng, int col, espacioTablero Jugador, espacioTablero tablero[][10]);
+void CapturaMovimiento(int &x, int &y);
+void RealizaMovimiento(int reng, int col, int &scoreJugador, int &scoreOponente, espacioTablero tab[][10]);
 
 bool JuegaReversi(){
     espacioTablero JugadorActual = NEGRA, tablero[10][10];
-    bool PosiblesMovimientos[10][10] = {};
-    int x, y, score1, score2, fichasEnTablero = 4, turnosSinMov = 0;
+    bool PosiblesMovimientos[9][9] = {};
+    int x, y, score1 = 2, score2 = 2, fichasEnTablero = 4, turnosSinMov = 0;
     bool posible;
     
     do{
         posible = false;
         for(int i = 1; i < 9; i++)
             for(int j = 1; j < 9; j++){
-                if (MovimientoPosible(i, j)){
+                if (MovimientoPosible(i, j, JugadorActual, tablero)){
                     posible = true;
                     PosiblesMovimientos[i][j] = true;
                 }
             }
             
         if (posible){
-            turnosSinMov = 0
+            turnosSinMov = 0;
             do{
-                posible = CapturaMovimiento(x, y);
+                CapturaMovimiento(x, y);
+                posible = PosiblesMovimientos[x][y];
                 if (!posible) ImprimeMovimientoIncorrecto();
 
             }while(!posible);
+            
             RealizaMovimiento(x, y, (JugadorActual == NEGRA ? score1 : score2), (JugadorActual == NEGRA ? score2 : score1));
             fichasEnTablero++;
             
