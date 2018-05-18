@@ -32,11 +32,11 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="FuncionesMenu.cpp" />
-		<Unit filename="FuncionesMenu.h" />
 		<Unit filename="ManejoConsola.cpp" />
 		<Unit filename="ManejoConsola.h" />
 		<Unit filename="ReconocimientoTeclado.h" />
+		<Unit filename="TitulosMenu.cpp" />
+		<Unit filename="TitulosMenu.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

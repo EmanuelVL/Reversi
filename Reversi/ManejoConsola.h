@@ -1,7 +1,8 @@
 #ifndef MANEJOCONSOLA_H_INCLUDED
 #define MANEJOCONSOLA_H_INCLUDED
 
-#define _WIN32_WINNT 0x0500
+#define ANCHOVENTANA 120
+#define ALTOVENTANA 60
 
 // Estados del cursor
 enum estadoCursor{APAGADO, ENCENDIDO};
@@ -10,10 +11,8 @@ enum modoCursor{MINI = 5, NORMAL = 20, SOLIDO = 80};
 
 void CambiaCursor(estadoCursor estado, modoCursor modo = NORMAL);
 
-void MaximizaVentana();
+void AjustaVentana();
 
 void gotoxy(int x, int y);
-
-void ObtieneDimensionesVentana(int &ancho, int &alto);
 
 #endif // MANEJOCONSOLA_H_INCLUDED
