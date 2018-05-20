@@ -1,0 +1,22 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+    char chars;
+    ifstream stream;
+
+    stream.open("Instrucciones.txt");
+    stream.get(chars);
+
+    while(! stream.eof()){
+        cout << chars;
+        stream.get(chars);
+    }
+
+    stream.close();
+    return 0;
+}
