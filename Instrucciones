@@ -1,0 +1,15 @@
+El objetivo de este juego es tener la mayor cantidad de fichas de tu color al final del juego
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+°S\xA2lo puedes poner una ficha en el extremo de una hilera de fichas que tengan el color del contrincante; siempre y cuando al otro extremo de ésta
+
+	haya una ficha de tu color.
+
+°Si al poner una ficha, encierras una hilera de fichas del color contrario las fichas del color contrario se convertirán a fichas de tu color
+	esto puede ser verticalmente, horizontalmente o diagonalmente.
+
+°Si al poner una ficha, encierras más de una hilera de fichas del color contrario, todas las hileras que se encuentren encerradas se cambiarán a tu color.
+
+°Si no es posible encerrar al menos una ficha, el jugador pasará su turno sin incorporar ninguna ficha al tablero.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+El juego termina si se acaban las casillas del tablero o si ningún jugador puede incorporar una ficha al tablero, siguiendo las reglas anteriores
