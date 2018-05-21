@@ -1,0 +1,55 @@
+# depslib dependency file v1.0
+1526880376 source:c:\users\raul\documents\c++ files\reversi\main.cpp
+	<iostream>
+	<cstdlib>
+	<limits>
+	<conio.h>
+	"ReconocimientoTeclado.h"
+	"TitulosMenu.h"
+	"ManejoConsola.h"
+
+1526880711 source:c:\users\raul\documents\c++ files\reversi\manejoconsola.cpp
+	<windows.h>
+	<cstdio>
+	"ManejoConsola.h"
+
+1526880348 source:c:\users\raul\documents\c++ files\reversi\funcionesmenu.cpp
+	<iostream>
+	<fstream>
+	<cstdlib>
+	"ManejoConsola.h"
+	"DibujaJuego.h"
+	"AuxiliaresJuego.h"
+
+1526410644 c:\users\raul\documents\c++ files\reversi\funcionesmenu.h
+
+1526880147 c:\users\raul\documents\c++ files\reversi\manejoconsola.h
+
+1526410424 c:\users\raul\documents\c++ files\reversi\reconocimientoteclado.h
+
+1526453731 source:c:\users\raul\documents\c++ files\reversi\eleccionmenu.cpp
+	<iostream>
+	<cstdlib>
+	"ManejoConsola.h"
+
+1526621508 c:\users\raul\documents\c++ files\reversi\titulosmenu.h
+
+1526835670 source:c:\users\raul\documents\c++ files\reversi\titulosmenu.cpp
+	<iostream>
+	<windows.h>
+	"TitulosMenu.h"
+	"ManejoConsola.h"
+
+1526880264 source:c:\users\raul\documents\c++ files\reversi\auxiliaresjuego.cpp
+	"ManejoConsola.h"
+	"DibujaJuego.h"
+	"AuxiliaresJuego.h"
+
+1526880068 c:\users\raul\documents\c++ files\reversi\dibujajuego.h
+
+1526880459 source:c:\users\raul\documents\c++ files\reversi\dibujajuego.cpp
+	<iostream>
+	"ManejoConsola.h"
+
+1526880251 c:\users\raul\documents\c++ files\reversi\auxiliaresjuego.h
+
