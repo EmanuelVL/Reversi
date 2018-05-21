@@ -1,0 +1,49 @@
+#include <iostream>
+#include <windows.h>
+
+using namespace std;
+
+void gotoxy(int x,int y);
+
+int main()
+{
+    string nombre1, nombre2;
+
+    for(int i = 0; i < 30; ++i){
+        for(int j = 0; j < 50; ++j){
+            if((i > 0 && i < 20) && (j == 0)){ cout << "\xBA";
+            }else if(i == 0 && (j > 0 && j < 45)){ cout << "\xCD";
+            }else if(i == 0 && j == 0){ cout << "\xC9";
+            }else if(i == 20 && (j > 0 && j < 45)){ cout << "\xCD";
+            }else if((i > 0 && i < 20) && (j == 45)){ cout << "\xBA";
+            }else if(i == 20 && j == 0){ cout << "\xC8";
+            }else if(i == 0 && j == 45){ cout << "\xBB";
+            }else if(i == 20 && j == 45){ cout << "\xBC";
+            }else cout << " ";
+        }
+        cout << endl;
+    }
+
+    gotoxy(7, 5);
+    cout << "Jugador 1: ";
+
+    gotoxy(7, 13);
+    cout << "Jugador 2: ";
+
+    gotoxy(18, 5);
+    getline(cin, nombre1);
+
+    gotoxy(18, 13);
+    getline(cin, nombre2);
+
+    gotoxy(10, 22);
+
+    return 0;
+}
+//-----------------------------------------------------------
+void gotoxy(int x,int y)
+{
+    HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+    COORD coord = {x - 1,y - 1};
+    SetConsoleCursorPosition(handle,coord);
+}
