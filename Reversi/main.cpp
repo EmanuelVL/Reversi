@@ -1,8 +1,10 @@
 
 #include <iostream>
 #include <cstdlib>
-#include <limits>
 #include <conio.h>
+
+#include <limits>
+#include <windows.h>
 
 #include "ReconocimientoTeclado.h"
 #include "TitulosMenu.h"
@@ -29,13 +31,10 @@ int main()
 
         switch(eleccion){
             case JUGAR:
-
                 bool JuegaDeNuevo;
-
                 do{
                     JuegaDeNuevo = JuegaReversi();
                 }while(JuegaDeNuevo);
-
                 break;
             case INSTRUCCIONES:
                 Instrucciones();
@@ -68,9 +67,9 @@ int Menu()
     Subraya(eleccion, char(205));
 
     while(tecla != ENTER){
+
         if (kbhit()){
             tecla = getch();
-
             if(tecla == FLECHA_ARRIBA){
                 eleccion--;
                 if (eleccion < 0) eleccion += 4; //Se mantienen los límites del seleccionador

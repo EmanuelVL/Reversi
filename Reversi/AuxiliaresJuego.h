@@ -13,4 +13,8 @@ void InicializaTablero(espacioCasilla Tab[][10]);
 
 void ImprimeTablero(espacioCasilla Tab[][10]);
 
+void CapturaMovimiento(int &x, int &y, miColor color);
+
+void ImprimeScores(int score1, int score2);
+
 #endif // AUXILIARESJUEGO_H_INCLUDED
